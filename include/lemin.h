@@ -22,7 +22,7 @@ typedef struct	s_list
 struct	s_room
 {
   char		*name;
-  t_path	*path;
+  t_list	*path;
 }		t_room;
 
 #endif	/* !LEMIN_H_ */
