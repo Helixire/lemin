@@ -5,16 +5,20 @@
 ## Login   <baudin_r@epitech.net>
 ##
 ## Started on  Mon Mar 30 13:55:23 2015 Romain Baudin
-## Last update Mon Mar 30 14:02:17 2015 Romain Baudin
+## Last update Wed Apr 15 21:21:30 2015 arnaud bourget
 ##
 
 CC	= gcc
 
-RM	= rm -rf
+RM	= rm -f
 
 NAME	= lem_in
 
-SRCS	=
+CFLAGS	+= -Wall -Wextra -Werror
+CFLAGS	+= -ansi -pedantic
+CFLAGS	+= -Iinclude
+
+SRCS	= sources/main.c
 
 OBJS	= $(SRCS:.c=.o)
 
@@ -30,3 +34,5 @@ fclean:	clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
