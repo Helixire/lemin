@@ -92,5 +92,5 @@ char		*get_next_line(const int fd)
 	}
     }
   gScrol(buffer);
-  return (tmp);
+  return ((tmp == NULL) ? add_char(&tmp, 0, 0) : tmp);
 }

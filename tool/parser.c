@@ -57,7 +57,7 @@ int	parse_count(char *str, char *delim)
 	}
     }
   return (j);
-}	
+}
 
 int	parse_init(char *str, char *delim, char ***result)
 {

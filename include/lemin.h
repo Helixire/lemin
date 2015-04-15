@@ -11,4 +11,18 @@
 #ifndef LEMIN_H_
 # define LEMIN_H_
 
+typedef t_room s_room;
+
+typedef struct	s_list
+{
+  t_room	*room;
+  struct s_path	*next;
+}		t_list;
+
+struct	s_room
+{
+  char		*name;
+  t_path	*path;
+}		t_room;
+
 #endif	/* !LEMIN_H_ */

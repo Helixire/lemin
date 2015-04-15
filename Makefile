@@ -18,7 +18,10 @@ CFLAGS	+= -Wall -Wextra -Werror
 CFLAGS	+= -ansi -pedantic
 CFLAGS	+= -Iinclude
 
-SRCS	= sources/main.c
+SRCS	= sources/main.c \
+	  tool/get_next_line.c \
+	  tool/str.c \
+	  tool/parser.c
 
 OBJS	= $(SRCS:.c=.o)
 
