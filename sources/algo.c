@@ -32,9 +32,14 @@ t_room		*find_next(t_list *list)
 int		algo(t_list *list)
 {
   t_room	*current;
+  t_room	*end;
   t_list	*i;
 
-  while ((current = find_next(list)) != NULL)
+  i = list;
+  while (i->room->special != 2)
+    i = i->next;
+  end = i->room;
+  while ((current = find_next(list)) != NULL && current != end)
     {
       current->visited = 1;
       i = current->path;
@@ -45,11 +50,8 @@ int		algo(t_list *list)
 	  i = i->next;
 	}
     }
-  i = list;
-  while (i->room->special != 2)
-    i = i->next;
-  if (i->room->poid == -1)
+  if (end->poid == -1)
     return (my_error(NP));
-  my_putnbr(i->room->poid);
+  my_putnbr(end->poid);
   return (0);
 }
