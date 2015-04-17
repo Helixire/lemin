@@ -9,6 +9,7 @@
 */
 
 #include "parser.h"
+#include "str.h"
 
 int	index_of(const char *str, const char c)
 {

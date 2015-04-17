@@ -8,13 +8,17 @@
 ** Last update Mon Mar 30 14:02:44 2015 Romain Baudin
 */
 
-#include "get_next_line.h"
 #include "lemin.h"
-#include "str.h"
-#include "parser.h"
 
-int	main(void)
+int		main(void)
 {
+  t_list	*list;
 
+  list = NULL;
+  if (init(&list) == 1)
+    return (clean_list(list));
+  if (algo(list) == 1)
+    return (clean_list(list));
+  clean_list(list);
   return (0);
 }

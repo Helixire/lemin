@@ -19,9 +19,13 @@ CFLAGS	+= -ansi -pedantic
 CFLAGS	+= -Iinclude
 
 SRCS	= sources/main.c \
+	  sources/init.c \
+	  sources/algo.c \
 	  tool/get_next_line.c \
 	  tool/str.c \
-	  tool/parser.c
+	  tool/str2.c \
+	  tool/parser.c \
+	  tool/list.c
 
 OBJS	= $(SRCS:.c=.o)
 

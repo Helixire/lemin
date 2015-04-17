@@ -12,11 +12,16 @@
 # define _STR_H_
 
 # include <unistd.h>
+# include <stdlib.h>
 
 int	my_strlen(char *str);
 int	my_putstr(char *str);
 int	my_error(char *str);
 int	my_strcmp(char *str, char *str2);
 int	my_get_nbr(char *str);
+int	my_tablen(char **tab);
+int	clear_tab(char **tab);
+char	*my_strdup(char *str);
+void	my_putnbr(int nb);
 
 #endif /* _STR_H_ */

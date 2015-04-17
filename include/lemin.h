@@ -11,18 +11,37 @@
 #ifndef LEMIN_H_
 # define LEMIN_H_
 
-typedef t_room s_room;
+# define START_ST	"##start"
+# define END_ST		"##end"
+
+# include <stdlib.h>
+
+typedef struct	s_room t_room;
 
 typedef struct	s_list
 {
   t_room	*room;
-  struct s_path	*next;
+  struct s_list	*next;
 }		t_list;
 
-struct	s_room
+struct		s_room
 {
   char		*name;
+  int		special;
+  int		x;
+  int		y;
+  int		poid;
+  int		visited;
   t_list	*path;
-}		t_room;
+};
+
+t_room		*create_room(char **tab, int special);
+t_list		*add_to_list(t_list *list, t_room *room);
+t_room		*find_room(t_list *list, char *name);
+int		link_room(t_list *list, char **tab);
+int		clean_list(t_list *list);
+int		clear_tab(char **tab);
+int		init(t_list **list);
+int		algo(t_list *list);
 
 #endif	/* !LEMIN_H_ */

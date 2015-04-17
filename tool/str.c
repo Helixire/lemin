@@ -48,14 +48,20 @@ int	my_get_nbr(char *str)
 {
   int	nb;
   int	i;
+  int	neg;
 
+  neg = 0;
   i = -1;
+  if (str[0] == '-')
+    {
+      neg = 1;
+      i = 0;
+    }
   nb = 0;
   while (str[++i] && str[i] >= '0' && str[i] <= '9')
     {
       nb *= 10;
       nb += str[i] - '0';
     }
-  return (nb);
+  return ((neg == 1) ? -nb : nb);
 }
-
