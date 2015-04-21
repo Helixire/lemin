@@ -8,7 +8,7 @@
 ** Last update Mon Jan 12 06:26:36 2015 pierre blank
 */
 
-#include "get_next_line.h" 
+#include "get_next_line.h"
 
 /*
 ** add_char: doc
@@ -43,7 +43,7 @@ char   	*add_char(char **str, const int l, const char c)
 /*
 ** gScrol: doc
 **
-** description : delete the first char and push all the others 
+** description : delete the first char and push all the others
 ** put a 0 at the end of buffer
 **
 ** param: buffer: the buffer to scrol

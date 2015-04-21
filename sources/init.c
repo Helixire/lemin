@@ -45,7 +45,7 @@ int		in_loop(t_list **list, char **tab, char *str, int *special)
     {
       if ((tab2 = parse(str, "-")) == NULL)
 	return (my_error(EM));
-      if (tab2[1] == NULL)
+      if (tab2[1] == NULL && tab2[2] != NULL)
 	return(my_error(EF) + clear_tab(tab2) - 1);
       return (link_room(*list, tab2) + clear_tab(tab2) - 1);
     }
