@@ -39,10 +39,10 @@ char	*my_strndup(char *str, int n)
   return (result);
 }
 
-int	parse_count(char *str, char *delim)
+static int	parse_count(char *str, char *delim)
 {
-  int	i;
-  int	j;
+  int		i;
+  int		j;
 
   i = 0;
   j = 0;

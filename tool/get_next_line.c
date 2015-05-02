@@ -20,7 +20,7 @@
 ** detail: if malloc returned NULL the function with also return NULL
 */
 
-char   	*add_char(char **str, const int l, const char c)
+static char	*add_char(char **str, const int l, const char c)
 {
   char	*result;
   int	i;
@@ -49,7 +49,7 @@ char   	*add_char(char **str, const int l, const char c)
 ** param: buffer: the buffer to scrol
 */
 
-void	gScrol(char *buffer)
+static void	gScrol(char *buffer)
 {
   int	i;
 
