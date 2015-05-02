@@ -1,0 +1,16 @@
+1
+##start
+begin 0 0
+##end
+end 10 0
+branch1 5 5
+branch2 5 -5
+branch11 10 5
+branch22 10 -5
+begin-branch1
+begin-branch2
+branch1-branch11
+branch2-branch22
+branch1-branch22
+branch11-end
+branch22-end

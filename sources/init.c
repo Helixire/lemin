@@ -14,7 +14,7 @@
 #include "parser.h"
 #include "my_error.h"
 
-int		check_room(t_list *list, char **tab)
+static int	check_room(t_list *list, char **tab)
 {
   t_list	*current;
   int		x;
@@ -34,7 +34,7 @@ int		check_room(t_list *list, char **tab)
   return (0);
 }
 
-int		in_loop(t_list **list, char **tab, char *str, int *special)
+static int	in_loop(t_list **list, char **tab, char *str, int *special)
 {
   int		i;
   t_room	*tmp;
@@ -63,16 +63,16 @@ int		in_loop(t_list **list, char **tab, char *str, int *special)
   return (0);
 }
 
-int	loop(char *str, t_list **list, int *special)
+static int	loop(char *str, t_list **list, int *special)
 {
-  char	**tab;
+  char		**tab;
 
   if ((tab = parse(str, " \t")) == NULL)
     return (my_error(EM));
   return (in_loop(list, tab, str, special) + clear_tab(tab) - 1);
 }
 
-int	check_special(int *stock, char *str, int *special)
+static int	check_special(int *stock, char *str, int *special)
 {
   if (my_strcmp(str, START_ST) == 0)
     {
@@ -99,15 +99,15 @@ int	check_special(int *stock, char *str, int *special)
   return (-1);
 }
 
-int	init(t_list **list)
+int	init(t_list **list, int *nb)
 {
   char	*str;
   int	special;
   int	stock;
   int	tmp;
 
-  stock = 0;
-  special = 0;
+  if (nb_get(nb, &stock, &special) == 1)
+    return (1);
   while ((str = get_next_line(0)) != NULL)
     {
       if ((tmp = check_special(&stock, str, &special)) == 1)

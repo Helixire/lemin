@@ -12,7 +12,19 @@
 #include "str.h"
 #include "my_error.h"
 
-t_room		*find_next(t_list *list)
+static void	reset_visited(t_list *list)
+{
+  t_list	*current;
+
+  current = list;
+  while (current != NULL)
+    {
+      current->room->visited = 0;
+      current = current->next;
+    }
+}
+
+static t_room	*find_next(t_list *list)
 {
   t_list	*i;
   t_room	*result;
@@ -29,41 +41,7 @@ t_room		*find_next(t_list *list)
   return (result);
 }
 
-int	is_in(char *str, char ***tab)
-{
-  int	i;
-  int	j;
-
-  i = -1;
-  if (tab != NULL)
-    while (tab[++i] != NULL)
-      {
-	j = -1;
-	while (tab[i][++j] != NULL)
-	  if (my_strcmp(str, tab[i][j]) == 0)
-	    return (1);
-      }
-  return (0);
-}
-
-t_room		*get_min(t_room *room, char ***tab)
-{
-  t_list	*path;
-  t_room	*res;
-
-  path = room->path;
-  res = NULL;
-  while (path != NULL)
-    {
-      if (is_in(path->room->name, tab) == 0 &&
-	  (res == NULL || res->poid > path->room->poid))
-	res = path->room;
-      path = path->next;
-    }
-  return (res);
-}
-
-int		algo(t_list *list)
+int		algo(t_list *list, int nb)
 {
   t_room	*current;
   t_room	*end;
@@ -86,6 +64,7 @@ int		algo(t_list *list)
     }
   if (end->poid == -1)
     return (my_error(NP));
-  my_putnbr(end->poid);
+  reset_visited(list);
+  bfs(end, nb);
   return (0);
 }

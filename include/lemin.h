@@ -39,9 +39,11 @@ t_room		*create_room(char **tab, int special);
 t_list		*add_to_list(t_list *list, t_room *room);
 t_room		*find_room(t_list *list, char *name);
 int		link_room(t_list *list, char **tab);
+int		nb_get(int *nb, int *stock, int *special);
 int		clean_list(t_list *list);
 int		clear_tab(char **tab);
-int		init(t_list **list);
-int		algo(t_list *list);
+int		init(t_list **list, int *nb);
+int		algo(t_list *list, int nb);
+int		bfs(const t_room *end, int nb);
 
-#endif	/* !LEMIN_H_ */
+#endif /* !LEMIN_H_ */

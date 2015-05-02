@@ -22,5 +22,8 @@
 # define NE	"ERROR : a room with that name already exist\n"
 # define LE	"ERROR : this link already exist\n"
 # define NP	"ERROR : there is no path to go from start to end\n"
+# define EN	"ERROR : the number of ants must be greater than 0\n"
+
+int	my_error(char *str);
 
 #endif /* !MY_ERROR_H_ */

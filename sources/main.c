@@ -13,11 +13,12 @@
 int		main(void)
 {
   t_list	*list;
+  int		nb;
 
   list = NULL;
-  if (init(&list) == 1)
+  if (init(&list, &nb) == 1)
     return (clean_list(list));
-  if (algo(list) == 1)
+  if (algo(list, nb) == 1)
     return (clean_list(list));
   clean_list(list);
   return (0);
