@@ -11,6 +11,35 @@
 #include "lemin.h"
 #include "str.h"
 
+static t_list	*get_before(t_list *list, t_list *cible)
+{
+  t_list	*c;
+
+  c = list;
+  if (list == cible)
+    return (NULL);
+  while (c->next != cible)
+    c = c->next;
+  return (c);
+}
+
+static t_list	*invert_list(t_list *list)
+{
+  t_list	*c;
+  t_list	*tmp;
+
+  c = list;
+  while (c->next != NULL)
+    c = c->next;
+  tmp = c;
+  while (c != NULL)
+    {
+      c->next = get_before(list, c);
+      c = c->next;
+    }
+  return (tmp);
+}
+
 int		main(void)
 {
   t_list	*list;
@@ -23,6 +52,7 @@ int		main(void)
     return (clean_list(list));
   if (algo(list, nb, &paths) == 1)
     return (clean_list(list));
+  list = invert_list(list);
   final_display(list, nb);
   c = list;
   while (c->room->special != 2)

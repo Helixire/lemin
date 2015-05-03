@@ -39,8 +39,7 @@ static int	*tables(t_list **paths, int nb)
   if ((ret = malloc(sizeof(*ret) * (i + 1))) == NULL)
     return (NULL);
   ret[i] = -1;
-  i = -1;
-  while (ret[++i] != -1)
+  while (--i >= 0)
     ret[i] = 0;
   pas = my_list_len(paths[0]);
   while (nb != 0)
