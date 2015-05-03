@@ -47,8 +47,6 @@ static int	bfs_end(t_list **paths)
   start = 0;
   while (paths[start] != NULL)
     {
-      if (paths[start]->room->poid == 0)
-	start += 1;
       i = start - 1;
       while (paths[++i] != NULL)
 	{
