@@ -11,6 +11,8 @@
 #include "my_error.h"
 #include "lemin.h"
 
+
+
 int		bfs(const t_room *end, int nb)
 {
   t_list	**paths;
@@ -29,5 +31,8 @@ int		bfs(const t_room *end, int nb)
   if ((paths = malloc(sizeof(*paths) * (nbpath + 1))) == NULL)
     return (my_error(EM));
   paths[nbpath] == NULL;
+  nbpath = -1;
+  while (paths[++nbpath] != NULL)
+    paths[nbpath] = find_next_path(end->path);
   return (0);
 }
