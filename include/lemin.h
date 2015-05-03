@@ -5,7 +5,7 @@
 ** Login   <baudin_r@epitech.net>
 **
 ** Started on  Mon Mar 30 14:03:39 2015 Romain Baudin
-** Last update Sun May  3 16:26:01 2015 arnaud bourget
+** Last update Sun May  3 22:53:40 2015 arnaud bourget
 */
 
 #ifndef LEMIN_H_
@@ -58,6 +58,6 @@ void		free_list(t_list *list);
 void		tri_list(t_list **lists);
 t_ant		*add_ant(t_ant *ants, t_list *list, int nb);
 int		free_ant(t_ant *ants);
-int	print_result(t_list **paths, int nb, char *end);
+int		print_result(t_list **paths, int nb, char *end);
 
 #endif /* !LEMIN_H_ */

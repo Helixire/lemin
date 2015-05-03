@@ -1,11 +1,11 @@
 /*
 ** bfs.c for lemin in /home/helixire/rendu/CPE_2014_lemin
-** 
+**
 ** Made by Blank Pierre
 ** Login   <blank_p@epitech.net>
-** 
+**
 ** Started on  Sat May  2 15:52:37 2015 Blank Pierre
-** Last update Sat May  2 15:52:37 2015 Blank Pierre
+** Last update Sun May  3 23:00:05 2015 arnaud bourget
 */
 
 #include "my_error.h"
@@ -30,7 +30,7 @@ static t_room	*find_next_path(t_list *list)
 
 static void	end_of_path(t_list **paths, const int i)
 {
-  int	j;
+  int		j;
 
   j = i;
   free_list(paths[j + 1]);

@@ -1,11 +1,11 @@
 /*
 ** print_result.c for lemin in /home/helixire/rendu/CPE_2014_lemin
-** 
+**
 ** Made by Blank Pierre
 ** Login   <blank_p@epitech.net>
-** 
+**
 ** Started on  Sun May  3 19:53:33 2015 Blank Pierre
-** Last update Sun May  3 19:53:33 2015 Blank Pierre
+** Last update Sun May  3 23:03:39 2015 arnaud bourget
 */
 
 #include "lemin.h"
@@ -29,9 +29,9 @@ static int	my_list_len(t_list *list)
 
 static int	*tables(t_list **paths, int nb)
 {
-  int	i;
-  int	pas;
-  int	*ret;
+  int		i;
+  int		pas;
+  int		*ret;
 
   i = 0;
   while (paths[i] != NULL)
@@ -58,7 +58,7 @@ static int	*tables(t_list **paths, int nb)
 
 static t_ant	*kill_ant(t_ant *list, t_ant *kill)
 {
-  t_ant	*c;
+  t_ant		*c;
 
   if (list == kill)
     {
