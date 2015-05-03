@@ -37,12 +37,19 @@ t_room		*create_room(char **tab, int special)
 t_list		*add_to_list(t_list *list, t_room *room)
 {
   t_list	*result;
+  t_list	*tmp;
 
   if ((result = malloc(sizeof(*result))) == NULL)
     return (NULL);
   result->room = room;
-  result->next = list;
-  return (result);
+  result->next = NULL;
+  if (list == NULL)
+    return (result);
+  tmp = list;
+  while (tmp->next != NULL)
+    tmp = tmp->next;
+  tmp->next = result;
+  return (list);
 }
 
 t_room		*find_room(t_list *list, char *name)
