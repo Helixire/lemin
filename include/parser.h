@@ -15,8 +15,6 @@
 
 int	index_of(const char *str, const char c);
 char	*my_strndup(char *str, int n);
-int	parse_count(char *str, char *delim);
-int	parse_init(char *str, char *delim, char ***result);
 char	**parse(char *str, char *delim);
 
 #endif /* _PARSER_H_ */

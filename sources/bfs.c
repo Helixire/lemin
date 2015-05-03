@@ -11,7 +11,21 @@
 #include "my_error.h"
 #include "lemin.h"
 
+/*static t_room	*find_next_path(t_list *list)
+{
+  t_list	*i;
+  t_room	*ret;
 
+  ret = NULL;
+  i = list;
+  while (i != NULL)
+    {
+      if (i->room->visited == 0 && (ret == NULL || i->room->poid < ret->poid))
+	ret = i->room;
+      i = i->next;
+    }
+  return (ret);
+  }*/
 
 int		bfs(const t_room *end, int nb)
 {
@@ -30,9 +44,10 @@ int		bfs(const t_room *end, int nb)
     }
   if ((paths = malloc(sizeof(*paths) * (nbpath + 1))) == NULL)
     return (my_error(EM));
-  paths[nbpath] == NULL;
+  paths[nbpath] = NULL;
   nbpath = -1;
+  /*
   while (paths[++nbpath] != NULL)
-    paths[nbpath] = find_next_path(end->path);
+  paths[nbpath] = find_next_path(end->path);*/
   return (0);
 }

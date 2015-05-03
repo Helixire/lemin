@@ -9,34 +9,35 @@
 */
 
 #include "lemin.h"
+#include "str.h"
 
-void	display_name(t_list *list)
+static void	display_name(t_list *list)
 {
   my_putstr(list->room->name);
-  my_putchar(' ');
+  my_putstr(" ");
   my_putnbr(list->room->x);
-  my_putchar(' ');
+  my_putstr(" ");
   my_putnbr(list->room->y);
-  my_putchar('\n');
+  my_putstr("\n");
 }
 
-void		display_link(t_list *list)
+static void	display_link(t_list *list)
 {
   t_list	*tmp;
   t_list	*link;
 
   tmp = list;
-  link = tmp->room->path;
   while (tmp != NULL)
     {
+      link = tmp->room->path;
       while (link != NULL)
 	{
 	  if (link->room->visited == 0)
 	    {
 	      my_putstr(tmp->room->name);
-	      my_putchar('-');
+	      my_putstr("-");
 	      my_putstr(link->room->name);
-	      my_putchar('\n');
+	      my_putstr("\n");
 	    }
 	  link = link->next;
 	}
@@ -45,21 +46,22 @@ void		display_link(t_list *list)
     }
 }
 
-int		final_display(t_list *list, int nb)
+void		final_display(t_list *list, int nb)
 {
   t_list	*tmp;
 
   tmp = list;
   my_putnbr(nb);
-  my_putchar('\n');
+  my_putstr("\n");
   while (tmp != NULL)
     {
       if (tmp->room->special != 0)
 	{
 	  (tmp->room->special == 1) ? my_putstr(START_ST) :
 	    my_putstr(END_ST);
-	  my_putchar('\n');
+	  my_putstr("\n");
 	}
+      tmp->room->visited = 0;
       display_name(tmp);
       tmp = tmp->next;
     }

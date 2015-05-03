@@ -20,6 +20,7 @@ int		main(void)
     return (clean_list(list));
   if (algo(list, nb) == 1)
     return (clean_list(list));
+  final_display(list, nb);
   clean_list(list);
   return (0);
 }
