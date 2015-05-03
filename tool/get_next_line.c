@@ -1,11 +1,11 @@
 /*
 ** get_next_line.c for OSEF in /home/blank_p/rendu/CPE_2014_get_next_line
-** 
+**
 ** Made by pierre blank
 ** Login   <blank_p@epitech.net>
-** 
+**
 ** Started on  Tue Nov 18 14:14:06 2014 pierre blank
-** Last update Mon Jan 12 06:26:36 2015 pierre blank
+** Last update Sun May  3 23:07:03 2015 arnaud bourget
 */
 
 #include "get_next_line.h"
@@ -22,8 +22,8 @@
 
 static char	*add_char(char **str, const int l, const char c)
 {
-  char	*result;
-  int	i;
+  char		*result;
+  int		i;
 
   if ((result = malloc(l + 2)) != NULL)
     {
@@ -51,7 +51,7 @@ static char	*add_char(char **str, const int l, const char c)
 
 static void	gScrol(char *buffer)
 {
-  int	i;
+  int		i;
 
   i = -1;
   while (++i < BUFFER_SIZE - 1)
@@ -61,7 +61,7 @@ static void	gScrol(char *buffer)
 
 /*
 ** get_next_line: doc
-** 
+**
 ** description: read one line from the file descriptor and retrun it
 ** param: fd = file descriptor
 ** return: char * of to the line read

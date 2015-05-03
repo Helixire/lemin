@@ -5,7 +5,7 @@
 ** Login   <blank_p@epitech.net>
 **
 ** Started on  Sun May  3 19:53:33 2015 Blank Pierre
-** Last update Sun May  3 23:03:39 2015 arnaud bourget
+** Last update Sun May  3 23:06:06 2015 arnaud bourget
 */
 
 #include "lemin.h"
@@ -78,8 +78,8 @@ static t_ant	*kill_ant(t_ant *list, t_ant *kill)
 
 static void	advance_ant(t_ant **ants, char *end)
 {
-  t_ant	*c;
-  t_ant	*tmp;
+  t_ant		*c;
+  t_ant		*tmp;
 
   c = *ants;
   while (c != NULL)

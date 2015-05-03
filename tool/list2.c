@@ -1,18 +1,18 @@
 /*
 ** list2.c for lemin in /home/helixire/rendu/CPE_2014_lemin
-** 
+**
 ** Made by Blank Pierre
 ** Login   <blank_p@epitech.net>
-** 
+**
 ** Started on  Sun May  3 18:22:20 2015 Blank Pierre
-** Last update Sun May  3 18:22:20 2015 Blank Pierre
+** Last update Sun May  3 23:07:49 2015 arnaud bourget
 */
 
 #include "lemin.h"
 #include "str.h"
 #include "my_error.h"
 
-void	free_list(t_list *list)
+void		free_list(t_list *list)
 {
   t_list	*tmp;
   t_list	*c;
@@ -26,9 +26,9 @@ void	free_list(t_list *list)
     }
 }
 
-int		clean_paths(t_list **paths)
+int	clean_paths(t_list **paths)
 {
-  int		i;
+  int	i;
 
   i = -1;
   while (paths[++i] != NULL)
