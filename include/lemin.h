@@ -5,7 +5,7 @@
 ** Login   <baudin_r@epitech.net>
 **
 ** Started on  Mon Mar 30 14:03:39 2015 Romain Baudin
-** Last update Mon Mar 30 14:05:05 2015 Romain Baudin
+** Last update Sun May  3 16:26:01 2015 arnaud bourget
 */
 
 #ifndef LEMIN_H_
@@ -45,5 +45,6 @@ int		clear_tab(char **tab);
 int		init(t_list **list, int *nb);
 int		algo(t_list *list, int nb);
 int		bfs(const t_room *end, int nb);
+int		final_display(t_list *list, int nb);
 
 #endif /* !LEMIN_H_ */
