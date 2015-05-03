@@ -10,27 +10,7 @@
 
 #include "my_error.h"
 #include "lemin.h"
-
-int		clean_paths(t_list **paths)
-{
-  int		i;
-  t_list	*tmp;
-  t_list	*c;
-
-  i = -1;
-  while (paths[++i] != NULL)
-    {
-      c = paths[i];
-      while (c != NULL)
-	{
-	  tmp = c;
-	  c = c->next;
-	  free(tmp);
-	}
-    }
-  free(paths);
-  return (1);
-}
+#include "str.h"
 
 static t_room	*find_next_path(t_list *list)
 {
@@ -48,9 +28,70 @@ static t_room	*find_next_path(t_list *list)
   return (ret);
 }
 
-int		bfs(const t_room *end, int nb)
+static void	end_of_path(t_list **paths, const int i)
 {
-  t_list	**paths;
+  int	j;
+
+  j = i;
+  free_list(paths[j + 1]);
+  while (paths[++j] != NULL)
+    paths[j] = paths[j + 1];
+}
+
+static int	bfs_end(t_list **paths)
+{
+  int		i;
+  t_room	*tmp;
+  int		start;
+
+  start = 0;
+  while (paths[start] != NULL)
+    {
+      if (paths[start]->room->poid == 0)
+	start += 1;
+      i = start - 1;
+      while (paths[++i] != NULL)
+	{
+	  if ((tmp = find_next_path(paths[i]->room->path)) == NULL)
+	    end_of_path(paths, i -= 1);
+	  else
+	    {
+	      if ((paths[i] = add_to_list(paths[i], tmp)) == NULL)
+		return (my_error(EM) + clean_paths(paths) - 1);
+	      if (tmp->poid == 0)
+		start += 1;
+	      else
+		tmp->visited = 1;
+	    }
+	}
+    }
+  return (0);
+}
+
+static t_room	*get_next_in_list(t_list *list)
+{
+  static t_list	*c;
+  t_room	*ret;
+
+  if (c == NULL)
+    c = list;
+  while (c != NULL)
+    {
+      if (c->room->poid != -1)
+	{
+	  if (c->room->poid != 0)
+	    c->room->visited = 1;
+	  ret = c->room;
+	  c = c->next;
+	  return (ret);
+	}
+      c = c->next;
+    }
+  return (NULL);
+}
+
+int		bfs(const t_room *end, int nb, t_list ***paths)
+{
   t_list	*current;
   int		nbpath;
 
@@ -63,12 +104,13 @@ int		bfs(const t_room *end, int nb)
 	nbpath += 1;
       current = current->next;
     }
-  if ((paths = malloc(sizeof(*paths) * (nbpath + 1))) == NULL)
+  if ((*paths = malloc(sizeof(**paths) * (nbpath + 1))) == NULL)
     return (my_error(EM));
-  paths[nbpath] = NULL;
-  nbpath = -1;
-  while (paths[++nbpath] != NULL)
-    if ((paths[nbpath] = add_to_list(NULL, find_next_path(end->path))) == NULL)
-      return (my_error(EM) + clean_paths(paths) - 1);
-  return (0);
+  (*paths)[nbpath] = NULL;
+  while (--nbpath > -1)
+    if (((*paths)[nbpath] =
+	 add_to_list(NULL, get_next_in_list(end->path))) == NULL)
+      return (my_error(EM) + clean_paths(*paths) - 1);
+  tri_list(*paths);
+  return (bfs_end(*paths));
 }

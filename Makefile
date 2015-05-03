@@ -24,11 +24,13 @@ SRCS	= sources/main.c \
 	  sources/nb_get.c \
 	  sources/bfs.c \
 	  sources/display.c \
+	  sources/print_result.c \
 	  tool/get_next_line.c \
 	  tool/str.c \
 	  tool/str2.c \
 	  tool/parser.c \
-	  tool/list.c
+	  tool/list.c \
+	  tool/list2.c
 
 OBJS	= $(SRCS:.c=.o)
 

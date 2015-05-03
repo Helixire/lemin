@@ -9,18 +9,26 @@
 */
 
 #include "lemin.h"
+#include "str.h"
 
 int		main(void)
 {
   t_list	*list;
   int		nb;
+  t_list	**paths;
+  t_list	*c;
 
   list = NULL;
   if (init(&list, &nb) == 1)
     return (clean_list(list));
-  if (algo(list, nb) == 1)
+  if (algo(list, nb, &paths) == 1)
     return (clean_list(list));
   final_display(list, nb);
+  c = list;
+  while (c->room->special != 2)
+    c = c->next;
+  print_result(paths, nb, c->room->name);
   clean_list(list);
+  clean_paths(paths);
   return (0);
 }

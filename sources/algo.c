@@ -41,7 +41,7 @@ static t_room	*find_next(t_list *list)
   return (result);
 }
 
-int		algo(t_list *list, int nb)
+int		algo(t_list *list, int nb, t_list ***paths)
 {
   t_room	*current;
   t_room	*end;
@@ -65,6 +65,5 @@ int		algo(t_list *list, int nb)
   if (end->poid == -1)
     return (my_error(NP));
   reset_visited(list);
-  bfs(end, nb);
-  return (0);
+  return (bfs(end, nb, paths));
 }

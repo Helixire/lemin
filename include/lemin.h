@@ -35,6 +35,13 @@ struct		s_room
   t_list	*path;
 };
 
+typedef struct	s_ant
+{
+  t_list	*path;
+  int		nb;
+  struct s_ant	*next;
+}		t_ant;
+
 t_room		*create_room(char **tab, int special);
 t_list		*add_to_list(t_list *list, t_room *room);
 t_room		*find_room(t_list *list, char *name);
@@ -43,9 +50,14 @@ int		nb_get(int *nb, int *stock, int *special);
 int		clean_list(t_list *list);
 int		clear_tab(char **tab);
 int		init(t_list **list, int *nb);
-int		algo(t_list *list, int nb);
-int		bfs(const t_room *end, int nb);
+int		algo(t_list *list, int nb, t_list ***paths);
+int		bfs(const t_room *end, int nb, t_list ***paths);
 void		final_display(t_list *list, int nb);
 int		clean_paths(t_list **paths);
+void		free_list(t_list *list);
+void		tri_list(t_list **lists);
+t_ant		*add_ant(t_ant *ants, t_list *list, int nb);
+int		free_ant(t_ant *ants);
+int	print_result(t_list **paths, int nb, char *end);
 
 #endif /* !LEMIN_H_ */

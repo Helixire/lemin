@@ -12,8 +12,6 @@
 #include "str.h"
 #include "my_error.h"
 
-#include <stdio.h>
-
 t_room		*create_room(char **tab, int special)
 {
   t_room	*result;
@@ -37,19 +35,12 @@ t_room		*create_room(char **tab, int special)
 t_list		*add_to_list(t_list *list, t_room *room)
 {
   t_list	*result;
-  t_list	*tmp;
 
   if ((result = malloc(sizeof(*result))) == NULL)
     return (NULL);
   result->room = room;
-  result->next = NULL;
-  if (list == NULL)
-    return (result);
-  tmp = list;
-  while (tmp->next != NULL)
-    tmp = tmp->next;
-  tmp->next = result;
-  return (list);
+  result->next = list;
+  return (result);
 }
 
 t_room		*find_room(t_list *list, char *name)
@@ -87,26 +78,16 @@ int		link_room(t_list *list, char **tab)
   return (0);
 }
 
-int		clean_list(t_list *list)
+int	free_ant(t_ant *ants)
 {
-  t_list	*i;
-  t_list	*j;
-  t_list	*tmp;
+  t_ant	*c;
+  t_ant	*tmp;
 
-  i = list;
-  while (i != NULL)
+  c = ants;
+  while (c != NULL)
     {
-      j = i->room->path;
-      while (j != NULL)
-	{
-	  tmp = j;
-	  j = j->next;
-	  free(tmp);
-	}
-      tmp = i;
-      i = i->next;
-      free(tmp->room->name);
-      free(tmp->room);
+      tmp = c;
+      c = c->next;
       free(tmp);
     }
   return (1);
