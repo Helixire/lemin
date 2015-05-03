@@ -46,5 +46,6 @@ int		init(t_list **list, int *nb);
 int		algo(t_list *list, int nb);
 int		bfs(const t_room *end, int nb);
 void		final_display(t_list *list, int nb);
+int		clean_paths(t_list **paths);
 
 #endif /* !LEMIN_H_ */

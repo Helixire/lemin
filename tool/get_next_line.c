@@ -81,7 +81,7 @@ char		*get_next_line(const int fd)
     {
       if (buffer[0] == 0)
 	{
-	  if (read(fd, buffer, BUFFER_SIZE) <= 0)
+	  if (read(fd, buffer, BUFFER_SIZE) <= 0 || buffer[0] == 0)
 	    return (tmp);
 	}
       else

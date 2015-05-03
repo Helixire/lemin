@@ -11,6 +11,27 @@
 #include "my_error.h"
 #include "lemin.h"
 
+int		clean_paths(t_list **paths)
+{
+  int		i;
+  t_list	*tmp;
+  t_list	*c;
+
+  i = -1;
+  while (paths[++i] != NULL)
+    {
+      c = paths[i];
+      while (c != NULL)
+	{
+	  tmp = c;
+	  c = c->next;
+	  free(tmp);
+	}
+    }
+  free(paths);
+  return (1);
+}
+
 static t_room	*find_next_path(t_list *list)
 {
   t_list	*i;
@@ -48,8 +69,6 @@ int		bfs(const t_room *end, int nb)
   nbpath = -1;
   while (paths[++nbpath] != NULL)
     if ((paths[nbpath] = add_to_list(NULL, find_next_path(end->path))) == NULL)
-      {
-	return (my_error(EM));
-      }
+      return (my_error(EM) + clean_paths(paths) - 1);
   return (0);
 }

@@ -17,9 +17,7 @@ int	nb_get(int *nb, int *stock, int *special)
 {
   char	*str;
 
-  while ((str = get_next_line(0)) != NULL && str[0] == 0)
-    free(str);
-  if (str == NULL)
+  if ((str = get_next_line(0)) == NULL)
     return (my_error(EM));
   if ((*nb = my_get_nbr(str)) <= 0)
     {
