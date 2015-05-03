@@ -78,6 +78,7 @@ void		tri_list(t_list **lists)
 t_ant	*add_ant(t_ant *ant, t_list *list, int nb)
 {
   t_ant	*ret;
+  t_ant	*c;
 
   if ((ret = malloc(sizeof(*ret))) == NULL)
     {
@@ -86,6 +87,12 @@ t_ant	*add_ant(t_ant *ant, t_list *list, int nb)
     }
   ret->path = list;
   ret->nb = nb;
-  ret->next = ant;
-  return (ret);
+  ret->next = NULL;
+  if (ant == NULL)
+    return (ret);
+  c = ant;
+  while (c->next != NULL)
+    c = c->next;
+  c->next = ret;
+  return (ant);
 }
